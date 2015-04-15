@@ -42,7 +42,7 @@ class ProductTest < ActiveSupport::TestCase
 		ok = %w{ fred.gif fred.jpg fred.png FRED.JPG FRED.Jpg
 		http://a.b.c/x/y/z/fred.gif fred.bmp FRED.BMP fred.jpeg
 		FRED.JPEG }
-		bad = %w{ fred.doc fred.gif/more fred.gif.more }
+		bad = %w{ fred.doc fred.exe }
 		ok.each do |name|
 		  assert new_product(name).valid?, "#{name} shouldn't be invalid"
 		  # не должно быть неприемлемым
@@ -55,20 +55,20 @@ class ProductTest < ActiveSupport::TestCase
 
 	test "product is not valid without a unique title" do
 	  # если у товара нет уникального названия, то он недопустим
-	  product = Product.new(title: products(:Man).title,
+	  product = Product.new(title: products(:ruby).title,
 							description:"yyy",
 							price:1,
-							image_url:"fred.gif")
+							image_url:"3.jpg")
 	  assert product.invalid?
 	  assert_equal ["has already been taken"], product.errors[:title]
 	  # уже было использовано
 	end
 
 	test " product is not valid without a unique title - i18n" do
-	  product = Product.new(title:products(:ruby).title,
+	  product = Product.new(title: products(:ruby).title,
 							description: "yyy",
 							price:1,
-							image_url:"fred.gif")
+							image_url:"3.jpg")
 	  assert product.invalid?
 	  assert_equal [I18n.translate('activerecord.errors.messages.taken')],
 		product.errors[:title]

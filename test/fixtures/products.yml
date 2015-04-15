@@ -12,8 +12,14 @@ two:
   image_url: MyString
   price: 9.99
 
-Man:
-  title: Man
+ruby:
+  title: ruby
   description: Bongo-Bong
   image_url: 3.jpg
   price: 49.95
+
+rails:
+  title: rails
+  description: pokyrims
+  image_url: 2.jpg
+  price: 3.05

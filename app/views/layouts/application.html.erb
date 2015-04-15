@@ -8,7 +8,22 @@
 </head>
 <body>
  <body class='<%= controller.controller_name %>'>
-<%= yield %>
-
+ 	<div id="banner">
+ 		<%= image_tag("logo.png")%>
+ 		<%= @page_title || "Super shop"%>
+ 	</div>
+ 	<div id="columns">
+ 		<div id="side">
+ 			<ul>
+ 				<li><a href="#">Home</a></li>
+ 				<li><a href="#">Questions</a></li>
+ 				<li><a href="#">News</a></li>
+ 				<li><a href="#">Contacts</a></li>
+ 			</ul>
+ 		</div>
+ 		<div id="main">	
+			<%= yield %>
+		</div>
+	</div>
 </body>
 </html>
